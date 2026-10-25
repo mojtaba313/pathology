@@ -1,0 +1,163 @@
+.search-highlight {
+  background: #ffdc89;
+  color: #161b2b;
+  border-radius: 3px;
+}
+
+.side .navitem.active {
+  box-shadow: inset -3px 0 var(--cyan);
+}
+
+.searchresults {
+  margin-bottom: 16px;
+}
+
+.searchresults p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body.lightmode {
+  --bg: #f3f6fc;
+  --panel: #ffffff;
+  --panel2: #e7edf7;
+  --text: #17233a;
+  --muted: #5c6a82;
+  --line: #d1d9e7;
+  background: radial-gradient(1200px 480px at 70% -10%, #cfe0fb66, transparent), var(--bg);
+  color: var(--text);
+}
+
+body.lightmode .hero {
+  background: linear-gradient(130deg, #e6f1ff, #ece8ff 70%, #f7e9f5);
+}
+
+body.lightmode .hero p,
+body.lightmode .lessonbody p,
+body.lightmode .callout {
+  color: #33425c;
+}
+
+body.lightmode .pill {
+  background: #ffffff;
+  border-color: #c9d6ea;
+  color: #24334d;
+}
+
+body.lightmode .panel,
+body.lightmode .side {
+  background: #ffffff;
+}
+
+body.lightmode .side {
+  background: #ffffffef;
+}
+
+body.lightmode .navitem:hover,
+body.lightmode .navitem.active {
+  background: #e7eefb;
+}
+
+body.lightmode .lessonbody h3,
+body.lightmode .lessonbody h4,
+body.lightmode .lessonbody b,
+body.lightmode .sectionhead h2 {
+  color: #17233a;
+}
+
+body.lightmode .lessonbody th {
+  background: #eef3fb;
+  color: #0d5860;
+}
+
+body.lightmode .figure,
+body.lightmode .flow {
+  background: #f6f9ff;
+}
+
+body.lightmode .statgrid div,
+body.lightmode .cards2 article,
+body.lightmode .flow span {
+  background: #eef3fb;
+}
+
+body.lightmode .note {
+  background: #fff6e8;
+  color: #5c4524;
+}
+
+body.lightmode .exam {
+  background: #f2edff;
+  color: #3b2d62;
+  border-color: #b7a9dd;
+}
+
+body.lightmode .quizcard {
+  background: #f8faff;
+}
+
+body.lightmode .option:hover {
+  background: #eef3fb;
+}
+
+body.lightmode .option.correct {
+  background: #e1f5ec;
+}
+
+body.lightmode .option.wrong {
+  background: #fbe7ea;
+}
+
+body.lightmode .feedback {
+  background: #f1f5fb;
+  color: #33425c;
+}
+
+body.lightmode .quizresult {
+  background: #eef4fd;
+}
+
+body.lightmode .flashcard {
+  background: linear-gradient(135deg, #eaf2ff, #f4edff);
+}
+
+body.lightmode .flashcard p {
+  color: #27364f;
+}
+
+body.lightmode .thumb {
+  background: #f7f9fe;
+}
+
+body.lightmode .gallerytools select,
+body.lightmode .gallerytools input {
+  background: #ffffff;
+  color: #17233a;
+}
+
+body.lightmode .modalinner {
+  background: #ffffff;
+}
+
+body.lightmode .search {
+  background: #ffffff;
+  color: #17233a;
+}
+
+body.lightmode .btn {
+  background: #e7edf7;
+  color: #17233a;
+}
+
+body.lightmode .btn.primary {
+  color: #081720;
+}
+
+body.lightmode .progress {
+  background: #dbe4f2;
+}
+
+body.lightmode .modal {
+  background: #050914cc;
+}
