@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { faNum } from '../lib/utils.js'
+import { assetUrl, faNum } from '../lib/utils.js'
 
 const EN_PAGES = 130
 const FA_PAGES = 23
@@ -10,8 +10,8 @@ const pageNumbers = (type) =>
 
 const pageSrc = (type, page) =>
   type === 'en'
-    ? `/assets/handouts/en/slide-${String(page).padStart(3, '0')}.jpg`
-    : `/assets/handouts/fa/page-${String(page).padStart(2, '0')}.jpg`
+    ? assetUrl(`assets/handouts/en/slide-${String(page).padStart(3, '0')}.jpg`)
+    : assetUrl(`assets/handouts/fa/page-${String(page).padStart(2, '0')}.jpg`)
 
 export default function GalleryView({ onOpenImage }) {
   const [type, setType] = useState('en')

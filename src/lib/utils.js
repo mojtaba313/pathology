@@ -1,3 +1,13 @@
+export const BASE_URL = import.meta.env.BASE_URL
+
+export const assetUrl = (path) => `${BASE_URL}${path.replace(/^\/+/, '')}`
+
+export const withBasePath = (html) =>
+  html.replace(
+    /(src|href)="\/(assets|sources)\//g,
+    (_, attribute, directory) => `${attribute}="${BASE_URL}${directory}/`,
+  )
+
 export const faNum = (value) =>
   String(value).replace(/[0-9]/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'[Number(digit)])
 

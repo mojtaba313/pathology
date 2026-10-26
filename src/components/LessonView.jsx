@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { faNum, highlightHtml } from '../lib/utils.js'
+import { faNum, highlightHtml, withBasePath } from '../lib/utils.js'
 
 export default function LessonView({
   lesson,
@@ -15,10 +15,10 @@ export default function LessonView({
 }) {
   const bodyRef = useRef(null)
 
-  const html = useMemo(
-    () => (search?.query ? highlightHtml(lesson.html, search.query) : lesson.html),
-    [lesson.html, search],
-  )
+  const html = useMemo(() => {
+    const content = withBasePath(lesson.html)
+    return search?.query ? highlightHtml(content, search.query) : content
+  }, [lesson.html, search])
 
   useEffect(() => {
     bodyRef.current?.querySelectorAll('a').forEach((anchor) => {

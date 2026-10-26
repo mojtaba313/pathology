@@ -1,3 +1,5 @@
+import { assetUrl } from '../lib/utils.js'
+
 export default function ReferencesView() {
   return (
     <section className="panel">
@@ -14,13 +16,13 @@ export default function ReferencesView() {
       <ul>
         <li>
           <b>جزوه ارائه انگلیسی:</b>{' '}
-          <a href="/sources/GENETIC_AND_PEDIATRIC_DISORDERS2.pdf" target="_blank" rel="noreferrer">
+          <a href={assetUrl('sources/GENETIC_AND_PEDIATRIC_DISORDERS2.pdf')} target="_blank" rel="noreferrer">
             باز کردن PDF اصلی (۱۳۰ صفحه)
           </a>
         </li>
         <li>
           <b>جزوه فارسی:</b>{' '}
-          <a href="/sources/جزوه_فارسی_اختلالات_ژنتیک.pdf" target="_blank" rel="noreferrer">
+          <a href={assetUrl('sources/جزوه_فارسی_اختلالات_ژنتیک.pdf')} target="_blank" rel="noreferrer">
             باز کردن PDF اصلی (۲۳ صفحه)
           </a>
         </li>
