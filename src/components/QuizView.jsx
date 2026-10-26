@@ -11,6 +11,8 @@ const resultMessage = (percent) => {
 }
 
 export default function QuizView({
+  title = 'آزمون جامع',
+  description = 'سؤال‌ها را تک‌به‌تک یا همه را یکجا پاسخ بده. هر پاسخ، علت درست/نادرست بودن گزینه‌ها را نشان می‌دهد.',
   questions,
   lessons,
   indices,
@@ -32,11 +34,8 @@ export default function QuizView({
     <section className="panel">
       <div className="sectionhead">
         <div className="eyebrow">آزمون فعال</div>
-        <h2>آزمون جامع ماژول اول</h2>
-        <p>
-          سؤال‌ها را تک‌به‌تک یا همه را یکجا پاسخ بده. هر پاسخ، علت درست/نادرست
-          بودن گزینه‌ها را نشان می‌دهد.
-        </p>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
 
       <div className="quiztop">

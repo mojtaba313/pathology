@@ -53,6 +53,7 @@ export default function LessonView({
             بخش {faNum(lessonIndex + 1)} از {faNum(total)}
           </div>
           <h2>{lesson.title}</h2>
+          {lesson.summary && <p className="lesson-summary">{lesson.summary}</p>}
           <p>زمان پیشنهادی: {lesson.mins}</p>
           <div className="meta">
             <span className="tag">مبنای محتوا: جزوه‌های درسی</span>
@@ -94,7 +95,7 @@ export default function LessonView({
           توضیح بده. سپس خودت جواب را با تیترها و جدول همین بخش مقایسه کن.
         </p>
         <button type="button" className="btn" onClick={onOpenQuiz}>
-          رفتن به آزمون جامع
+          رفتن به آزمون
         </button>
       </section>
     </>

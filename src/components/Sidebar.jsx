@@ -1,14 +1,31 @@
 import { cleanTitle, faNum } from '../lib/utils.js'
 
-const specials = [
-  { id: 'quiz', label: '🧠 آزمون جامع', score: true },
-  { id: 'flash', label: '🗂 فلش‌کارت‌ها' },
-  { id: 'gallery', label: '🖼 گالری همه صفحات جزوه‌ها' },
-  { id: 'references', label: '📚 منابع و روش استفاده' },
-]
+const buildSpecials = (module) => {
+  const specials = []
+  if (module.questions?.length) {
+    specials.push({
+      id: 'quiz',
+      label: module.quiz?.navLabel || '🧠 آزمون جامع',
+      score: true,
+    })
+  }
+  if (module.flashcards?.length) {
+    specials.push({ id: 'flash', label: '🗂 فلش‌کارت‌ها' })
+  }
+  if (module.summary?.html) {
+    specials.push({ id: 'summary', label: module.summary.label || '📌 جمع‌بندی سریع' })
+  }
+  if (module.gallery?.collections?.length) {
+    specials.push({ id: 'gallery', label: '🖼 گالری همه صفحات جزوه‌ها' })
+  }
+  if (module.references?.html) {
+    specials.push({ id: 'references', label: '📚 منابع و روش استفاده' })
+  }
+  return specials
+}
 
 export default function Sidebar({
-  lessons,
+  module,
   special,
   activeLesson,
   done,
@@ -16,6 +33,9 @@ export default function Sidebar({
   onSelectLesson,
   onSelectSpecial,
 }) {
+  const lessons = module.lessons || []
+  const specials = buildSpecials(module)
+
   return (
     <aside className="side">
       <h3>مطالب ماژول</h3>

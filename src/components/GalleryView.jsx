@@ -1,26 +1,26 @@
 import { useState } from 'react'
 import { assetUrl, faNum } from '../lib/utils.js'
 
-const EN_PAGES = 130
-const FA_PAGES = 23
 const PAGE_SIZE = 24
 
-const pageNumbers = (type) =>
-  Array.from({ length: type === 'en' ? EN_PAGES : FA_PAGES }, (_, index) => index + 1)
+const pageSrc = (collection, page) =>
+  assetUrl(
+    collection.file.replace('{page}', String(page).padStart(collection.pad || 0, '0')),
+  )
 
-const pageSrc = (type, page) =>
-  type === 'en'
-    ? assetUrl(`assets/handouts/en/slide-${String(page).padStart(3, '0')}.jpg`)
-    : assetUrl(`assets/handouts/fa/page-${String(page).padStart(2, '0')}.jpg`)
-
-export default function GalleryView({ onOpenImage }) {
-  const [type, setType] = useState('en')
+export default function GalleryView({ gallery, onOpenImage }) {
+  const collections = gallery.collections || []
+  const [type, setType] = useState(collections[0]?.id || '')
   const [search, setSearch] = useState('')
   const [limit, setLimit] = useState(PAGE_SIZE)
 
-  const numbers = pageNumbers(type).filter(
-    (page) => !search.trim() || String(page).includes(search.trim()),
-  )
+  if (!collections.length) return null
+
+  const collection = collections.find((item) => item.id === type) || collections[0]
+  const numbers = Array.from(
+    { length: collection.pageCount },
+    (_, index) => index + 1,
+  ).filter((page) => !search.trim() || String(page).includes(search.trim()))
   const shown = numbers.slice(0, limit)
 
   const selectType = (value) => {
@@ -34,7 +34,7 @@ export default function GalleryView({ onOpenImage }) {
   }
 
   const reset = () => {
-    setType('en')
+    setType(collections[0].id)
     setSearch('')
     setLimit(PAGE_SIZE)
   }
@@ -43,29 +43,23 @@ export default function GalleryView({ onOpenImage }) {
     <section className="panel">
       <div className="sectionhead">
         <div className="eyebrow">اسناد اصلی درس</div>
-        <h2>گالری کامل صفحات دو جزوه</h2>
-        <p>
-          همه صفحات هر دو PDF در فایل ZIP به صورت تصویر محلی آمده‌اند؛ روی هر صفحه
-          کلیک کن تا بزرگ شود. این گالری کمک می‌کند شکل‌ها، نمودارها و متن‌های
-          تصویری از قلم نیفتند.
-        </p>
+        <h2>{gallery.title}</h2>
+        <p>{gallery.intro}</p>
       </div>
 
-      <div className="callout">
-        گالری شامل ۱۳۰ اسلاید ارائه انگلیسی و ۲۳ صفحه جزوه فارسی است. برای این
-        ماژول، صفحات مرتبط با مبانی ژنتیک را در بخش درس اشاره کرده‌ایم؛ صفحات بعدی
-        در ماژول‌های آینده تدریس خواهند شد، اما نسخه تصویری آن‌ها همین‌جا در دسترس
-        است.
-      </div>
+      {gallery.callout && <div className="callout">{gallery.callout}</div>}
 
       <div className="gallerytools">
         <select
-          value={type}
+          value={collection.id}
           onChange={(event) => selectType(event.target.value)}
           aria-label="نوع جزوه"
         >
-          <option value="en">ارائه انگلیسی (۱۳۰ اسلاید)</option>
-          <option value="fa">جزوه فارسی (۲۳ صفحه)</option>
+          {collections.map((item) => (
+            <option value={item.id} key={item.id}>
+              {item.label}
+            </option>
+          ))}
         </select>
         <input
           value={search}
@@ -80,13 +74,13 @@ export default function GalleryView({ onOpenImage }) {
       </div>
 
       <div className="small">
-        نمایش {faNum(shown.length)} از {faNum(numbers.length)} صفحه
+        نمایش {faNum(shown.length)} از {faNum(numbers.length)} {collection.unit}
       </div>
 
       <div className="gallery">
         {shown.map((page) => {
-          const src = pageSrc(type, page)
-          const title = `${type === 'en' ? 'اسلاید ارائه انگلیسی' : 'صفحه جزوه فارسی'} ${faNum(page)}`
+          const src = pageSrc(collection, page)
+          const title = `${collection.unit} ${faNum(page)}`
 
           return (
             <button
@@ -98,10 +92,10 @@ export default function GalleryView({ onOpenImage }) {
               <img
                 loading="lazy"
                 src={src}
-                alt={`${type === 'en' ? 'اسلاید' : 'صفحه جزوه'} ${page}`}
+                alt={`${collection.unit} ${page}`}
               />
               <span>
-                {type === 'en' ? 'اسلاید' : 'صفحه'} {faNum(page)}
+                {collection.unit} {faNum(page)}
               </span>
             </button>
           )

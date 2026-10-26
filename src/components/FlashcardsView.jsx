@@ -9,6 +9,8 @@ export default function FlashcardsView({
   onFlip,
   onRandom,
 }) {
+  if (!flashcards.length) return null
+
   const safeIndex = index % flashcards.length
   const card = flashcards[safeIndex]
 
@@ -27,14 +29,14 @@ export default function FlashcardsView({
         {back ? (
           <div>
             <h3>پاسخ</h3>
-            <p>{card[1]}</p>
+            <p>{card.definition}</p>
           </div>
         ) : (
           <div>
             <div className="qnum">
               کارت {faNum(safeIndex + 1)} از {faNum(flashcards.length)}
             </div>
-            <h3>{card[0]}</h3>
+            <h3>{card.term}</h3>
             <p>برای دیدن توضیح کلیک کن</p>
           </div>
         )}

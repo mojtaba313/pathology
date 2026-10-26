@@ -11,6 +11,9 @@ export default function TopBar({ progress, theme, onSearch, onToggleTheme }) {
 
   return (
     <form className="topbar" onSubmit={handleSubmit}>
+      <a className="btn ghost" href="#/">
+        همه ماژول‌ها
+      </a>
       <input
         className="search"
         placeholder="جست‌وجو در درس‌ها، اصطلاحات و تست‌ها…"

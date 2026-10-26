@@ -161,3 +161,150 @@ body.lightmode .progress {
 body.lightmode .modal {
   background: #050914cc;
 }
+
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.homehero {
+  margin-bottom: 16px;
+}
+
+.modulegrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.modulecard {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 0;
+}
+
+.modulecardtop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.modulebadge {
+  color: var(--cyan);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.modulecard h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.65;
+}
+
+.modulecard > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.modulemeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.modulemeta span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 9px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.moduleprogress {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.moduleprogress .progresslabel {
+  font-size: 0.78rem;
+}
+
+.modulebtn {
+  margin-top: 4px;
+}
+
+.lesson-summary {
+  color: #dbe7ff !important;
+  font-size: 0.97rem;
+  border-right: 3px solid var(--cyan);
+  padding: 7px 12px;
+  background: #17243a;
+  border-radius: 9px;
+}
+
+.diagram {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 18px 0;
+  padding: 16px;
+  background: #0d1629;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.step {
+  padding: 10px 14px;
+  border: 1px solid #40577c;
+  border-radius: 12px;
+  background: #1a2943;
+  text-align: center;
+}
+
+.step.accent {
+  border-color: var(--violet);
+  color: #ddd6fe;
+}
+
+.callout.warn {
+  background: #392b17;
+  border-color: var(--amber);
+}
+
+body.lightmode .lesson-summary {
+  color: #33425c !important;
+  background: #eef3fb;
+}
+
+body.lightmode .diagram {
+  background: #f6f9ff;
+}
+
+body.lightmode .step {
+  background: #eef3fb;
+  border-color: #b9c9e2;
+}
+
+body.lightmode .step.accent {
+  color: #4c3a78;
+}
+
+body.lightmode .callout.warn {
+  background: #fff4df;
+  color: #5c4524;
+}
+
+@media (max-width: 600px) {
+  .modulegrid {
+    grid-template-columns: 1fr;
+  }
+}

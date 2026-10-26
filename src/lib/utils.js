@@ -17,7 +17,7 @@ export const escapeRegExp = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 export const cleanTitle = (title) =>
-  title.replace(/^[0-9۰-۹]+\)\s*/, '')
+  title.replace(/^[0-9۰-۹]+[.)]\s*/, '')
 
 export const highlightHtml = (html, query) => {
   if (!query) return html
