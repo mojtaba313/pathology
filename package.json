@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/validate-modules.mjs",
     "build": "vite build",
+    "validate:modules": "node scripts/validate-modules.mjs",
     "preview": "vite preview",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist"
